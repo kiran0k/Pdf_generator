@@ -1,11 +1,11 @@
-from fpdf import FPDF
-import pandas as pd
+from fpdf import FPDF # for PDF Making
+import pandas as pd # For CSV Files
 
 pdf = FPDF(orientation='P', unit='mm', format='A4')
 
-df = pd.read_csv('topics.csv')
+df = pd.read_csv('topics.csv') # This will read the topics.csv
 
-for index, row in df.iterrows():
+for index, row in df.iterrows(): # iterrows iter everything and make it easy for you
     pdf.add_page()
 
     pdf.set_font(family='Times', style='B', size=24)
@@ -15,4 +15,5 @@ for index, row in df.iterrows():
     pdf.line(10,21, 200,21)
     for i in range(row['Pages'] -1):
         pdf.add_page()
+#This is where you will get your output
 pdf.output('output.pdf')
